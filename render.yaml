@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ethical-analyzer-api
+    runtime: python
+    buildCommand: ""
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: COHERE_API_KEY
+        value: rLz5cKn5fMeWUyPsOwxAx4WYVyKezdbOHy1xEfbt
