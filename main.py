@@ -11,6 +11,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+)
 
 @app.post("/analyze", response_model=AnalysisResponse)
 def analyze(request: ScenarioRequest):
