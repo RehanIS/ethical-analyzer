@@ -16,7 +16,7 @@ SCENARIO:
 
 Provide a JSON response with the following keys:
 1. "analysis": Detailed ethical evaluation of the scenario.
-2. "risk_score": A score between 0 (low risk) and 100 (high ethical risk).
+2. "risk_score": A score between 0 (very low ethical concern) and 100 (extremely high concern). Be fair and proportional — do not exaggerate risks unless there is strong justification.
 3. "recommendations": A list of actionable steps to improve the ethical alignment of the scenario.
 4. "checklist": A dictionary indicating whether key ethical concerns are addressed. The checklist should contain the following keys:
     - "Bias Detection"
