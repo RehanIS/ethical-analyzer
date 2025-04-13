@@ -43,7 +43,16 @@ Respond ONLY in JSON.
             raw = json_match.group(1)
 
     try:
-        return json.loads(raw)
+        parsed = json.loads(raw)
+
+        # Sanitize checklist values to be real booleans
+        checklist = parsed.get("checklist", {})
+        parsed["checklist"] = {
+            key: str(value).lower() == "true" for key, value in checklist.items()
+        }
+
+        return parsed
+
     except json.JSONDecodeError:
         return {
             "analysis": raw,
