@@ -15,14 +15,25 @@ SCENARIO:
 \"\"\"
 
 Provide a JSON response with the following keys:
-1. "analysis": Detailed ethical evaluation of the scenario.
-2. "risk_score": A score between 0 (very low ethical concern) and 100 (extremely high concern). Be fair and proportional — do not exaggerate risks unless there is strong justification.
-3. "recommendations": A list of actionable steps to improve the ethical alignment of the scenario.
-4. "checklist": A dictionary indicating whether key ethical concerns are addressed. The checklist should contain the following keys:
-    - "Bias Detection"
-    - "Transparency"
-    - "Data Privacy"
-    - "Human Oversight"
+{{
+  "analysis": "<Detailed ethical evaluation>",
+  "risk_score": <integer between 0 and 100>,
+  "recommendations": [
+    "First actionable suggestion",
+    "Second suggestion"
+  ],
+  "checklist": {{
+    "Bias Detection": true/false,
+    "Transparency": true/false,
+    "Data Privacy": true/false,
+    "Human Oversight": true/false
+  }}
+}}
+
+Please be realistic in risk scoring:
+- 0–30: Low risk
+- 31–60: Moderate risk
+- 61–100: High risk
 
 Respond ONLY in JSON.
 """
@@ -31,7 +42,7 @@ Respond ONLY in JSON.
         model='command-r',
         message=prompt,
         max_tokens=800,
-        temperature=0.7,
+        temperature=0.4,
     )
 
     raw = response.text.strip()
